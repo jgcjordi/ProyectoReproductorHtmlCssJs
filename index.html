@@ -2,29 +2,39 @@
 <html>
 
 <head>
-    <title>Reproductor Html y JS con SoundCloud</title>
+    <title>Reproductor Html, CSS3 y JS con SoundCloud</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
 </head>
 
 <body>
+
+    <h1>Reproductor Html, CSS3 y JS con SoundCloud</h1>
+
     <form class="buscarCancion">
-        <p>Reproductor de canciones.</p>
-        <input id="textbox" type="search" placeholder="Busca la canción...">
-        <button id="submit">Buscar</button>
-
-    </form>
-
-    <form class="playerController">
-        <button id="pause">Pause</button>
-        <button id="play">Play</button>
+        <div class=botonBuscar>
+            <button class="btn btn-info" class="botonBuscar" id="submit">Buscar</button>
+        </div>
+        <input class="form-control" id="textbox" type="search" placeholder="Busca la canción...">
     </form>
 
     <div class="multimedia">
 
-        <img class="reproductor" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </img>
+        <div class="reproductor">
+
+            <img class="reproductorImg" src=reproductor.jpg ondrop="drop(event)" ondragover="allowDrop(event)">
+            </img>
+
+            <form class="playerController">
+                <div class="butonPlay">
+                    <button class="btn btn-dark" id="pause">Pause</button>
+                </div>
+                <button class="btn btn-dark" id="play">Play</button>
+            </form>
+
+        </div>
+
 
         <div class="results">
         </div>

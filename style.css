@@ -1,19 +1,74 @@
-.multimedia {
-    display: flex;
+body {
+    background: #EBF7FF;
 }
 
-.reproductor {
-    height: 400px;
-    width: 400px;
+h1 {
+    display: flex;
+    justify-content: center;
+    background: #034A8D;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color: white;
+    border: 3px solid black;
+}
+
+.buscarCancion {
+    display: flex;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.botonBuscar {
+    margin-right: 10px;
+}
+
+.multimedia {
+    display: flex;
+    margin-left: 10px;
+}
+
+.reproductorImg {
+    min-height: 400px;
+    min-width: 400px;
     background-color: blue;
 }
 
+.playerController {
+    background: #C7FFFC;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    border: 4px solid transparent;
+    border-image: linear-gradient(to bottom, #6EADDC 0%, #28333B 100%) 1;
+}
+
 .results {
-    display: grid;
-    grid-template-columns: 100%;
+    padding-left: 5px;
 }
 
 .songItem {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    font-weight: bold;
+    display: flex;
+    margin: 2px;
+    border: 4px solid transparent;
+    border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%) 1;
+    background: #EAEEF1;
+}
+
+.songImg {
+    right: 0;
+}
+
+.songTitle {
+    display: flex;
+    align-items: center;
+    max-width: 250px;
+    padding-left: 5px;
+    color: black;
+}
+
+.butonPlay {
+    margin-right: 10px;
 }

@@ -22,7 +22,7 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
         .then(function(res) {
             console.log(res)
 
-            contSongItem = 1
+            let contSongItem = 1
 
             for (let i = 0; i < res.length; i++) {
                 let urlImagen = null;
@@ -33,7 +33,7 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
                 }
 
                 const songItem = document.createElement('div')
-                songItem.class = "songItem"
+                songItem.setAttribute('class', 'songItem');
                 songItem.id = "songItem" + contSongItem
                 songItem.songId = res[i].id
                 songItem.songSrc = urlImagen
@@ -44,16 +44,14 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
 
 
                 const imagen = document.createElement('img')
+                imagen.setAttribute('class', 'songImg');
                 imagen.src = urlImagen
                 imagen.songId = res[i].id
                 imagen.songSrc = urlImagen
-                songItem.draggable = "true"
-                songItem.ondragstart = function(event) {
-                    dragItemSong(event)
-                };
 
 
                 const title = document.createElement('p')
+                title.setAttribute('class', 'songTitle');
                 var node = document.createTextNode(res[i].title);
                 title.appendChild(node)
 
