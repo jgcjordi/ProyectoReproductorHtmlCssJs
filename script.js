@@ -36,7 +36,7 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
                 songItem.class = "songItem"
                 songItem.id = "songItem" + contSongItem
                 songItem.songId = res[i].id
-                songItem.songSrc = res[i].artwork_url
+                songItem.songSrc = urlImagen
                 songItem.draggable = "true"
                 songItem.ondragstart = function(event) {
                     dragItemSong(event)
@@ -45,12 +45,13 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
 
                 const imagen = document.createElement('img')
                 imagen.src = urlImagen
-                imagen.id = res[i].id
-                imagen.title = res[i].title
-                imagen.draggable = "true"
-                imagen.ondragstart = function(event) {
-                    drag(event)
+                imagen.songId = res[i].id
+                imagen.songSrc = urlImagen
+                songItem.draggable = "true"
+                songItem.ondragstart = function(event) {
+                    dragItemSong(event)
                 };
+
 
                 const title = document.createElement('p')
                 var node = document.createTextNode(res[i].title);
@@ -68,13 +69,6 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
 
 function allowDrop(ev) {
     ev.preventDefault();
-}
-
-function drag(ev) {
-    console.log("Entramos en el drag.")
-    console.log(ev)
-    ev.dataTransfer.setData("idSong", ev.target.id);
-    ev.dataTransfer.setData("srcSong", ev.target.src);
 }
 
 function dragItemSong(ev) {
