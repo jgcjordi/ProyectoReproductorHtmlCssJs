@@ -32,7 +32,11 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
                 document.querySelector('.results').append(songItem)
 
                 const imagen = document.createElement('img')
-                imagen.src = res[i].artwork_url
+                if (res[i].artwork_url != null) {
+                    imagen.src = res[i].artwork_url
+                } else {
+                    imagen.src = "disc.jpg"
+                }
                 imagen.id = res[i].id
                 imagen.title = res[i].title
                 imagen.draggable = "true"
