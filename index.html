@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Reproductor Html y JS con SoundCloud</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
+</head>
+
+<body>
+    <form class="buscarCancion">
+        <p>Reproductor de canciones.</p>
+        <input id="textbox" type="search" placeholder="Busca la canción...">
+        <button id="submit">Buscar</button>
+
+    </form>
+
+    <form class="playerController">
+        <button id="pause">Pause</button>
+        <button id="play">Play</button>
+    </form>
+
+    <div class="multimedia">
+
+        <img class="reproductor" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </img>
+
+        <div class="results">
+        </div>
+
+    </div>
+
+
+</body>
+
+<script type="text/javascript" src="script.js"></script>
+
+</html>

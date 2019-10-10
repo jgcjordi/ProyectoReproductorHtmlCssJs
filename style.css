@@ -1,0 +1,14 @@
+.multimedia {
+    display: flex;
+}
+
+.reproductor {
+    height: 400px;
+    width: 400px;
+    background-color: blue;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: 100%;
+}
