@@ -25,18 +25,26 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
             contSongItem = 1
 
             for (let i = 0; i < res.length; i++) {
+                let urlImagen = null;
+                if (res[i].artwork_url != null) {
+                    urlImagen = res[i].artwork_url
+                } else {
+                    urlImagen = "disc.jpg"
+                }
 
                 const songItem = document.createElement('div')
                 songItem.class = "songItem"
                 songItem.id = "songItem" + contSongItem
-                document.querySelector('.results').append(songItem)
+                songItem.songId = res[i].id
+                songItem.songSrc = res[i].artwork_url
+                songItem.draggable = "true"
+                songItem.ondragstart = function(event) {
+                    dragItemSong(event)
+                };
+
 
                 const imagen = document.createElement('img')
-                if (res[i].artwork_url != null) {
-                    imagen.src = res[i].artwork_url
-                } else {
-                    imagen.src = "disc.jpg"
-                }
+                imagen.src = urlImagen
                 imagen.id = res[i].id
                 imagen.title = res[i].title
                 imagen.draggable = "true"
@@ -67,6 +75,13 @@ function drag(ev) {
     console.log(ev)
     ev.dataTransfer.setData("idSong", ev.target.id);
     ev.dataTransfer.setData("srcSong", ev.target.src);
+}
+
+function dragItemSong(ev) {
+    console.log("Entramos en el drag ItemSong")
+    console.log(ev)
+    ev.dataTransfer.setData("idSong", ev.target.songId);
+    ev.dataTransfer.setData("srcSong", ev.target.songSrc);
 }
 
 function drop(ev) {
