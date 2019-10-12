@@ -1,4 +1,5 @@
 var reproductor = null;
+var playerSoundCloud = null;
 
 SC.initialize({
     client_id: 'aa06b0630e34d6055f9c6f8beb8e02eb'
@@ -27,9 +28,9 @@ document.querySelector('.buscarCancion').addEventListener('submit', function(eve
             for (let i = 0; i < res.length; i++) {
                 let urlImagen = null;
                 if (res[i].artwork_url != null) {
-                    urlImagen = res[i].artwork_url
+                    urlImagen = res[i].artwork_url;
                 } else {
-                    urlImagen = "disc.jpg"
+                    urlImagen = "disc.jpg";
                 }
 
                 const songItem = document.createElement('div')
@@ -87,26 +88,79 @@ function drop(ev) {
     playSong(iDdata)
 }
 
+
+/////////////BOTON PLAY/////////////////
+var audioPlayer = document.querySelector('.green-audio-player');
+var playpauseBtn = audioPlayer.querySelector('.play-pause-btn');
+playpauseBtn.addEventListener('click', togglePlay);
+
 function playSong(id) {
     SC.stream('/tracks/' + id).then(function(player) {
         player.play();
-        reproductor = player;
+        playerSoundCloud = player;
+        playPause.attributes.d.value = "M0 0h6v24H0zM12 0h6v24h-6z";
+        startProgressControll()
+        onFinish()
+        console.log(player)
     });
 }
 
-document.getElementById('pause').addEventListener('click', function(ev) {
-    ev.preventDefault();
-    if (reproductor != null) {
-        reproductor.pause();
+//boton intercambiable
+function togglePlay() {
+    console.log("Play/Pause btn Clicked")
+    if (playerSoundCloud != null) {
+        if (playerSoundCloud.isPlaying()) {
+            playPause.attributes.d.value = "M18 12L0 24V0";
+            playerSoundCloud.pause();
+        } else {
+            playPause.attributes.d.value = "M0 0h6v24H0zM12 0h6v24h-6z";
+            playerSoundCloud.play();
+        }
     }
-    console.log('btnPause Clicked');
+}
 
-});
 
-document.getElementById('play').addEventListener('click', function(ev) {
-    ev.preventDefault();
-    console.log('btnPlay Clicked');
-    if (reproductor != null) {
-        reproductor.play();
+/////////////PROGRESS SONG/////////////////
+var progress = audioPlayer.querySelector('.progress');
+var sliders = audioPlayer.querySelectorAll('.slider');
+var currentTime = audioPlayer.querySelector('.current-time');
+var totalTime = audioPlayer.querySelector('.total-time');
+
+function startProgressControll() {
+    playerSoundCloud.on("time", function() {
+
+        totalTime.textContent = formatTime(playerSoundCloud.getDuration());
+        currentTime.textContent = formatTime(playerSoundCloud.currentTime());
+
+        let songPercentajeNumber = songPercentaje(
+            playerSoundCloud.getDuration(),
+            playerSoundCloud.currentTime());
+
+        progress.style.width = songPercentajeNumber + '%'
+    })
+}
+
+function formatTime(time) {
+    if (time != null) {
+        let timeNumber = parseInt(time, 10)
+        let secAux = timeNumber / 1000;
+        let minAux = secAux / 60
+        let min = Math.floor(minAux);
+        let sec = Math.floor(secAux % 60);
+        return min + ':' + (sec < 10 ? '0' + sec : sec);
     }
-});
+}
+
+function songPercentaje(duration, currentTime) {
+    if (duration != null && currentTime != null) {
+        let dur = parseInt(duration, 10)
+        let current = parseInt(currentTime, 10)
+        return current / dur * 100;
+    }
+}
+
+function onFinish() {
+    playerSoundCloud.on("finish", function() {
+        playPause.attributes.d.value = "M18 12L0 24V0";
+    })
+}

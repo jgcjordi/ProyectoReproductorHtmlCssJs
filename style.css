@@ -1,11 +1,13 @@
 body {
-    background: #EBF7FF;
+    height: 100%;
+    background: -webkit-linear-gradient(-65deg, #F8FFAE, #43C6AC);
+    background-attachment: fixed;
 }
 
 h1 {
     display: flex;
     justify-content: center;
-    background: #034A8D;
+    background: #333641;
     padding-bottom: 20px;
     padding-top: 20px;
     color: white;
@@ -25,13 +27,15 @@ h1 {
 
 .multimedia {
     display: flex;
+    justify-content: center;
     margin-left: 10px;
 }
 
 .reproductorImg {
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, .07);
+    border-radius: 6px;
     min-height: 400px;
     min-width: 400px;
-    background-color: blue;
 }
 
 .playerController {
@@ -45,30 +49,120 @@ h1 {
 }
 
 .results {
-    padding-left: 5px;
+    padding-left: 15px;
 }
 
 .songItem {
-    font-weight: bold;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, .07);
+    border-radius: 8px;
     display: flex;
-    margin: 2px;
-    border: 4px solid transparent;
-    border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%) 1;
-    background: #EAEEF1;
+    margin: 5px;
+    overflow: none;
+    background: #333641;
 }
 
 .songImg {
     right: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 100px;
+    height: 100px;
 }
 
 .songTitle {
     display: flex;
     align-items: center;
     max-width: 250px;
-    padding-left: 5px;
-    color: black;
+    padding-left: 10px;
+    padding-right: 5px;
+    color: white;
+    font-weight: 600;
 }
 
 .butonPlay {
     margin-right: 10px;
+}
+
+
+/*Estilos playerController*/
+
+.audio.green-audio-player {
+    margin-top: 10px;
+    width: 400px;
+    min-width: 300px;
+    height: 56px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 4px;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: #fff;
+}
+
+.play-pause-btn {
+    display: none;
+    cursor: pointer;
+}
+
+.slider {
+    flex-grow: 1;
+    background-color: #D8D8D8;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress {
+    background-color: #44BFA3;
+    border-radius: inherit;
+    position: absolute;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.pin {
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    background-color: #44BFA3;
+    position: absolute;
+    pointer-events: all;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.32);
+}
+
+.controls {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    color: #55606E;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.slider {
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 2px;
+    height: 4px;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+}
+
+.pin {
+    right: -8px;
+    top: -6px;
+}
+
+span {
+    cursor: default;
 }

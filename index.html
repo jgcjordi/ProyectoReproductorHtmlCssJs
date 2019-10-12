@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Reproductor Html, CSS3 y JS con SoundCloud</title>
+    <title>Reproductor Html, CSS3 y JS con API SoundCloud</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
@@ -10,11 +10,11 @@
 
 <body>
 
-    <h1>Reproductor Html, CSS3 y JS con SoundCloud</h1>
+    <h1>Reproductor Html, CSS3 y JS con API SoundCloud</h1>
 
     <form class="buscarCancion">
         <div class=botonBuscar>
-            <button class="btn btn-info" class="botonBuscar" id="submit">Buscar</button>
+            <button class="btn btn-dark" class="botonBuscar" id="submit">Buscar</button>
         </div>
         <input class="form-control" id="textbox" type="search" placeholder="Busca la canción...">
     </form>
@@ -26,14 +26,28 @@
             <img class="reproductorImg" src=reproductor.jpg ondrop="drop(event)" ondragover="allowDrop(event)">
             </img>
 
-            <form class="playerController">
-                <div class="butonPlay">
-                    <button class="btn btn-dark" id="pause">Pause</button>
+            <div class="audio green-audio-player">
+                <div class="play-pause-btn" style="display: block;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
+                        <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause"></path>
+                    </svg>
                 </div>
-                <button class="btn btn-dark" id="play">Play</button>
-            </form>
+
+                <div class="controls">
+                    <span class="current-time">-:--</span>
+                    <div class="slider" data-direction="horizontal">
+                        <div class="progress" style="width: 0%;">
+                            <div class="pin" id="progress-pin" data-method="rewind"></div>
+                        </div>
+                    </div>
+                    <span class="total-time">-:--</span>
+                </div>
+
+            </div>
+
 
         </div>
+
 
 
         <div class="results">
