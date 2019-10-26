@@ -2,6 +2,8 @@
 
 La web utiliza peticiones get a la api de Sound Cloud para obener las cancioes desponibles segun la busqueda, que luego se pueden reproducir arrastrandolas encima del reproductor.
 
+[https://jgcjordi.github.io/ProyectoReproductorHtmlCssJs/](https://jgcjordi.github.io/ProyectoReproductorHtmlCssJs/)
+
 ![image](https://raw.githubusercontent.com/jgcjordi/proyectoSoundCloud/master/ejemploReadme.jpg)
 
 ## Tecnologías Utilizadas
